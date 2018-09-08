@@ -12,24 +12,44 @@
 
     <div class="grid">
         <div class="grid__item">
-            <div class="grid__video" data-youtube-lazy="k3yRfEw1pYk"></div>
+            <div class="grid__video" data-youtube-lazy="k3yRfEw1pYk">
+                <div class="yll__img-wrapp"></div>
+                <div class="row">Likes - <span class="likes"></span></div>
+                <div class="row">dislikes - <span class="dislikes"></span></div>
+                <div class="row">comments count - <span class="comments"></span></div>
+                <div class="row">views - <span class="views"></span></div>
+                <div class="row">title - <span class="title"></span></div>
+                <div class="row">describe - <span class="describe"></span></div>
+            </div>
         </div>
         <div class="grid__item">
-            <div class="grid__video" data-youtube-lazy="Xc2O7mwVqCM"></div>
-        </div>
-        <div class="grid__item">
-            <div class="grid__video" data-youtube-lazy="qWyfQ-YVztQ"></div>
-        </div>
-        <div class="grid__item">
-            <div class="grid__video" data-youtube-lazy="NskB18r0tPY"></div>
-        </div>
-        <div class="grid__item">
-            <div class="grid__video" data-youtube-lazy="A5XUremPhaY"></div>
+            <div class="grid__video" data-youtube-lazy="Xc2O7mwVqCM">
+                    <div class="yll__img-wrapp"></div>
+                    <div class="row">Likes - <span class="likes"></span></div>
+                    <div class="row">dislikes - <span class="dislikes"></span></div>
+                    <div class="row">comments count - <span class="comments"></span></div>
+                    <div class="row">views - <span class="views"></span></div>
+                    <div class="row">title - <span class="title"></span></div>
+                    <div class="row">describe - <span class="describe"></span></div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    <script src="script.js"></script>
+    <script src="youtubeLazyLoad.js"></script>
+    <script>
+        YoutubeLazyLoad('.grid__video',{
+            thumbnail: 'high',
+            imgWrapPath: '.yll__img-wrapp',
+            title: '.title',
+            description: '.describe',
+            likes: '.likes',
+            comments: '.comments',
+            views: '.views',
+            dislikes: '.dislikes',
+            youtubeIcon: false
+        });
+    </script>
 
 </body>
 </html>
