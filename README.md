@@ -37,8 +37,11 @@
 
 Функция принимает селектор, который будет содержать информацию о видео и объект параметров.
 
+Перед использованием необходимо [получить]((https://www.youtube.com/watch?v=qXhIpThTMlk) ) youtube api key
+
 Принимаемые параметры и их значения:
 
+        youtubeApiKey: key // youtube api key
         thumbnailSize: ('maxres' || 'standard' || 'high' || 'default' || 'medium'), // размер миниатюры
         imgWrapp: selector , // обертка для миниатюры
         title: selector , // заголовок
@@ -65,6 +68,7 @@ html:
 javascript:
 
     YoutubeLazyLoad ('.video-item', {
+        youtubeApiKey: 'AL12kdvasuFNPASsnalskd',
         thumbnailSize: 'maxres',
         imgWrapp: '.video-imgwrapp',
         title: '.video-title',

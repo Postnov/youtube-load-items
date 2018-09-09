@@ -6,11 +6,12 @@
     }
 
     var idArray = [],
-        apiKey = 'AIzaSyAk4ile8sBWQZYCuFhwEHukBw24JzLVXSo',
+        apiKey = params.youtubeApiKey,
         parametrs = 'snippet,contentDetails,statistics,status',
         request = new XMLHttpRequest();
 
     var options = {
+        youtubeApiKey: params.youtubeApiKey,
         thumbnailSize: params.thumbnailSize || false,
         imgWrapp: params.imgWrapp || false,
         likes: params.likes || false,
