@@ -2,8 +2,13 @@
 
 
 function YoutubeLazyLoad(selector, params) {
-    var nodes = document.querySelectorAll(selector),
-        idArray = [],
+    if (document.querySelectorAll(selector).length) {
+        var nodes = document.querySelectorAll(selector)
+    }else {
+        throw new Error('This selector is not defined in dom');
+    }
+
+    var idArray = [],
         apiKey = 'AIzaSyAk4ile8sBWQZYCuFhwEHukBw24JzLVXSo',
         parametrs = 'snippet,contentDetails,statistics,status',
         request = new XMLHttpRequest();
