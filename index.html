@@ -14,40 +14,40 @@
         <div class="grid__item">
             <div class="grid__video" data-youtube-lazy="k3yRfEw1pYk">
                 <div class="yll__img-wrapp"></div>
-                <div class="row"><span class="title"></span></div>
-                <div class="row"><span class="describe"></span></div>
-                <div class="row">Likes - <span class="likes"></span></div>
-                <div class="row">dislikes - <span class="dislikes"></span></div>
-                <div class="row">comments count - <span class="comments"></span></div>
-                <div class="row">views - <span class="views"></span></div>
+                <p class="row"><span class="title"></span></p>
+                <p class="row"><span class="describe"></span></p>
+                <p class="row">Likes - <span class="likes"></span></p>
+                <p class="row">dislikes - <span class="dislikes"></span></p>
+                <p class="row">comments count - <span class="comments"></span></p>
+                <p class="row">views - <span class="views"></span></p>
             </div>
         </div>
         <div class="grid__item">
             <div class="grid__video" data-youtube-lazy="Xc2O7mwVqCM">
                 <div class="yll__img-wrapp"></div>
-                <div class="row"><span class="title"></span></div>
-                <div class="row"><span class="describe"></span></div>
-                <div class="row">Likes - <span class="likes"></span></div>
-                <div class="row">dislikes - <span class="dislikes"></span></div>
-                <div class="row">comments count - <span class="comments"></span></div>
-                <div class="row">views - <span class="views"></span></div>
+                <p class="row"><span class="title"></span></p>
+                <p class="row"><span class="describe"></span></p>
+                <p class="row">Likes - <span class="likes"></span></p>
+                <p class="row">dislikes - <span class="dislikes"></span></p>
+                <p class="row">comments count - <span class="comments"></span></p>
+                <p class="row">views - <span class="views"></span></p>
             </div>
         </div>
     </div>
 
 
-    <script src="youtubeLazyLoad.min.js"></script>
+    <script src="youtubeLazyLoad.js"></script>
     <script>
         YoutubeLazyLoad('.grid__video',{
-            thumbnail: 'high',
-            imgWrapPath: '.yll__img-wrapp',
+            thumbnailSize: 'high',
+            imgWrapp: '.yll__img-wrapp',
             title: '.title',
             description: '.describe',
             likes: '.likes',
             comments: '.comments',
             views: '.views',
             dislikes: '.dislikes',
-            youtubeIcon: true
+            playIcon: true
         });
     </script>
 

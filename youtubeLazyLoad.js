@@ -22,15 +22,15 @@ function YoutubeLazyLoad(selector, params) {
 
 
     var options = {
-        thumbnail: params.thumbnail || false,
-        imgWrapPath: params.imgWrapPath || false,
+        thumbnailSize: params.thumbnailSize || false,
+        imgWrapp: params.imgWrapp || false,
         likes: params.likes || false,
         title: params.title || false,
         description: params.description || false,
         comments: params.comments || false,
         views: params.views || false,
         dislikes: params.dislikes || false,
-        youtubeIcon: params.youtubeIcon || false
+        playIcon: params.playIcon || false
     }
 
     var nodes = document.querySelectorAll(selector),
@@ -70,7 +70,7 @@ function YoutubeLazyLoad(selector, params) {
             });
 
             nodes.forEach(function(item, i) {
-                var hasImgWrapp = item.querySelector(options.imgWrapPath),
+                var hasImgWrapp = item.querySelector(options.imgWrapp),
                     hasTitle = item.querySelector(options.title),
                     hasDescription = item.querySelector(options.description),
                     hasLikes = item.querySelector(options.likes),
@@ -79,15 +79,15 @@ function YoutubeLazyLoad(selector, params) {
                     hasDislikes = item.querySelector(options.dislikes);
 
 
-                if (options.imgWrapPath !== false) {
+                if (options.imgWrapp !== false) {
                     imgWrapp = hasImgWrapp || yllCreateElement('div', undefined, 'yll__img-wrapp', undefined,undefined);
-                    imgWrapp.style.backgroundImage = `url(${videos[i].thumbnails[options.thumbnail].url})`;
+                    imgWrapp.style.backgroundImage = `url(${videos[i].thumbnails[options.thumbnailSize].url})`;
 
                     if (!hasImgWrapp) {
                         item.appendChild(imgWrapp);
                     }
 
-                    if(options.youtubeIcon) {
+                    if(options.playIcon) {
                         var icon = yllCreateElement('img', {src: 'http://icons.iconarchive.com/icons/dakirby309/simply-styled/128/YouTube-icon.png'}, 'yll__youtube-icon', undefined, undefined);
                         imgWrapp.appendChild(icon);
                     }
