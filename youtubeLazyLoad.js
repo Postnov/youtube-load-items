@@ -87,7 +87,13 @@ function YoutubeLazyLoad(selector, params) {
 
 
                 if (options.imgWrapp !== false) {
-                    var imgWrapp = hasImgWrapp || yllCreateElement('div', undefined, 'yll__img-wrapp', undefined,undefined);
+                    var thumbnailSize = videos[i].thumbnails[options.thumbnailSize],
+                        imgWrapp = hasImgWrapp || yllCreateElement('div', undefined, 'yll__img-wrapp', undefined,undefined);
+
+                    if (thumbnailSize === undefined ) {
+                        options.thumbnailSize = 'standard';
+                    }
+
                     imgWrapp.style.backgroundImage = `url(${videos[i].thumbnails[options.thumbnailSize].url})`;
 
                     if (!hasImgWrapp) {
