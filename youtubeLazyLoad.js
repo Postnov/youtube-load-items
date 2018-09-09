@@ -2,7 +2,27 @@
 
 
 function YoutubeLazyLoad(selector, params) {
+    var nodes = document.querySelectorAll(selector),
+        idArray = [],
+        apiKey = 'AIzaSyAk4ile8sBWQZYCuFhwEHukBw24JzLVXSo',
+        parametrs = 'snippet,contentDetails,statistics,status',
+        request = new XMLHttpRequest();
 
+    var options = {
+        thumbnailSize: params.thumbnailSize || false,
+        imgWrapp: params.imgWrapp || false,
+        likes: params.likes || false,
+        title: params.title || false,
+        description: params.description || false,
+        comments: params.comments || false,
+        views: params.views || false,
+        dislikes: params.dislikes || false,
+        playIcon: params.playIcon || false
+    }
+
+
+
+    // Функция для создания node элемента
     var yllCreateElement =  function (node, attr, classList, type, innerHtml) {
         var elem = document.createElement(node);
 
@@ -20,42 +40,23 @@ function YoutubeLazyLoad(selector, params) {
 
 
 
-
-    var options = {
-        thumbnailSize: params.thumbnailSize || false,
-        imgWrapp: params.imgWrapp || false,
-        likes: params.likes || false,
-        title: params.title || false,
-        description: params.description || false,
-        comments: params.comments || false,
-        views: params.views || false,
-        dislikes: params.dislikes || false,
-        playIcon: params.playIcon || false
-    }
-
-    var nodes = document.querySelectorAll(selector),
-        idArray = [],
-        apiKey = 'AIzaSyAk4ile8sBWQZYCuFhwEHukBw24JzLVXSo',
-        parametrs = 'snippet,contentDetails,statistics,status';
-
-
+    // Собираем все id видео
     nodes.forEach(function(item, i) {
         var videoId = item.getAttribute('data-youtube-lazy');
         idArray.push(videoId);
     });
 
 
-    request = new XMLHttpRequest();
+    request.open('GET', `https://www.googleapis.com/youtube/v3/videos?id=${idArray.join(',')}&key=${apiKey}&part=${parametrs}`);
 
-    request.open('GET', `https://www.googleapis.com/youtube/v3/videos?id=${idArray.join(',')}&key=AIzaSyAk4ile8sBWQZYCuFhwEHukBw24JzLVXSo&part=snippet,contentDetails,statistics,status`);
-
-     request.onload = function() {
+    request.onload = function() {
        if (request.status >= 200 && request.status < 400) { //проверяем статус запроса
-            var response = JSON.parse(request.response);
+            var response = JSON.parse(request.response),
+                items = response.items,
+                videos = [];
 
-            var items = response.items,
-            videos = [];
 
+            // Перебираем полученные видео и формируем нужный нам объект
             items.forEach(function(item) {
                 videos.push({
                     id: item.id,
@@ -69,6 +70,7 @@ function YoutubeLazyLoad(selector, params) {
                 });
             });
 
+            // Перебираем элементы dom и добавляем данные
             nodes.forEach(function(item, i) {
                 var hasImgWrapp = item.querySelector(options.imgWrapp),
                     hasTitle = item.querySelector(options.title),
@@ -80,7 +82,7 @@ function YoutubeLazyLoad(selector, params) {
 
 
                 if (options.imgWrapp !== false) {
-                    imgWrapp = hasImgWrapp || yllCreateElement('div', undefined, 'yll__img-wrapp', undefined,undefined);
+                    var imgWrapp = hasImgWrapp || yllCreateElement('div', undefined, 'yll__img-wrapp', undefined,undefined);
                     imgWrapp.style.backgroundImage = `url(${videos[i].thumbnails[options.thumbnailSize].url})`;
 
                     if (!hasImgWrapp) {
@@ -145,6 +147,4 @@ function YoutubeLazyLoad(selector, params) {
      };
 
     request.send();
-
-
-}
+}// end YoutubeLazyLoad
