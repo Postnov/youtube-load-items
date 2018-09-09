@@ -95,7 +95,7 @@ function YoutubeLazyLoad(selector, params) {
                     }
 
                     imgWrapp.addEventListener('click', function() {
-                        var iframe = yllCreateElement('iframe', {src: `https://www.youtube.com/embed/${videos[i].id}?autoplay=1`}, 'yll__iframe', undefined, undefined);
+                        var iframe = yllCreateElement('iframe', {src: `https://www.youtube.com/embed/${videos[i].id}?autoplay=1`, 'allowfullscreen': 'allowfullscreen'}, 'yll__iframe', undefined, undefined);
                         if(icon) this.removeChild(icon)
                         this.appendChild(iframe);
                     })
