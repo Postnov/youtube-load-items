@@ -1,7 +1,4 @@
-
-
-
-function YoutubeLazyLoad(selector, params) {
+;function YoutubeLazyLoad(selector, params) {
     if (document.querySelectorAll(selector).length) {
         var nodes = document.querySelectorAll(selector)
     }else {
